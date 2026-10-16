@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gift cute</title>
+<style>
+    /* Tổng thể trang web: Nền gradient hồng kem lãng mạn */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #fff0f3 0%, #f3e8ff 50%, #e0f2fe 100%);
+        background-attachment: fixed;
+        margin: 0;
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        color: #2d3748;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 950px;
+    }
+
+    /* Tiêu đề chính */
+  /* Tạo kiểu cho tiêu đề có viền dày và chữ gift bên phải */
+h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-align: center;
+    /* Tạo hiệu ứng viền dày cho chữ (dùng text-stroke) */
+    -webkit-text-stroke: 1.5px #db2777; /* Độ dày viền và màu viền hồng */
+    color: #ffffff; /* Màu chữ bên trong (có thể đổi thành #1a202c nếu thích chữ tối) */
+    text-shadow: 3px 3px 0px rgba(236, 72, 153, 0.2);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+}
+
+/* Thêm chữ hoặc icon gift nằm bên phải tiêu đề */
+/* Căn chỉnh cho tiêu đề h1 */
+h1 {
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc chữ và ảnh */
+    justify-content: center; /* Căn giữa toàn bộ tiêu đề ra giữa màn hình */
+    gap: 5px; /* Khoảng cách giữa chữ và ảnh GIF */
+    margin-bottom: 40px;
+    font-size: 2.5rem; /* Kích thước chữ tiêu đề */
+    color: #333;
+}
+/* Định dạng cho ảnh GIF */
+.animated-gift {
+    height: 50px; /* Chiều cao của ảnh GIF (tùy chỉnh cho đẹp) */
+    width: auto; /* Tự động điều chỉnh chiều rộng để giữ tỉ lệ */
+    vertical-align: middle; /* Giúp căn chỉnh tốt hơn */
+    animation: heartbeat 1.5s infinite; /* Thêm hiệu ứng nhịp tim cho quà */
+}
+
+/* (Tùy chọn) Thêm hiệu ứng cho quà nhảy nhót cho sinh động */
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    14% { transform: scale(1.1); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.1); }
+    70% { transform: scale(1); }
+}
+
+    h2 {
+        font-size: 1.4rem;
+        color: #2d3748;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        font-weight: 700;
+    }
+
+    /* Banner lớn bo tròn phong cách "DearGift" chứa phần Upload */
+    .upload-box {
+        background: linear-gradient(135deg, rgba(255, 240, 245, 0.95) 0%, rgba(243, 232, 255, 0.95) 100%);
+        backdrop-filter: blur(12px);
+        padding: 40px;
+        border-radius: 28px;
+        box-shadow: 0 20px 40px rgba(236, 72, 153, 0.08);
+        margin-bottom: 40px;
+        border: 2px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label { 
+        display: block; 
+        font-weight: 700; 
+        margin-bottom: 8px; 
+        color: #4a5568; 
+        font-size: 0.95rem;
+    }
+
+    input[type="text"], input[type="file"] {
+        width: 100%;
+        padding: 14px 18px;
+        border: 2px solid #e2e8f0;
+        border-radius: 14px;
+        box-sizing: border-box;
+        background: #ffffff;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    input[type="text"]:focus, input[type="file"]:focus {
+        border-color: #ec4899;
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.15);
+    }
+
+    /* Nút Upload kiểu hồng pastel gradient */
+    .btn-upload {
+        background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+        color: white;
+        border: none;
+        padding: 14px 24px;
+        font-size: 1rem;
+        font-weight: 700;
+        border-radius: 14px;
+        cursor: pointer;
+        width: 100%;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 8px 20px rgba(236, 72, 153, 0.3);
+    }
+
+    .btn-upload:hover { 
+        transform: translateY(-2px);
+        box-shadow: 0 12px 25px rgba(236, 72, 153, 0.4); 
+    }
+
+    /* Lưới danh sách Gift */
+    .gift-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 24px;
+    }
+
+    /* Thẻ Card Gift bo tròn mượt mà */
+    .gift-card {
+        background: #ffffff;
+        padding: 25px 20px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .gift-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 35px rgba(236, 72, 153, 0.1);
+        border-color: #fbcfe8;
+    }
+
+    .gift-card h3 { 
+        color: #1a202c; 
+        margin-top: 5px; 
+        margin-bottom: 20px; 
+        font-size: 1.15rem;
+        font-weight: 700;
+    }
+    
+    .card-actions {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .btn-run {
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        color: white;
+        border: none;
+        padding: 9px 18px;
+        border-radius: 10px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: opacity 0.2s;
+    }
+    .btn-run:hover { opacity: 0.9; }
+    
+    .btn-delete {
+        background: #fee2e2;
+        color: #dc2626;
+        border: none;
+        padding: 9px 14px;
+        border-radius: 10px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+    .btn-delete:hover { background: #fca5a5; }
+
+    /* Màn hình chạy trực tiếp Gift (Iframe) */
+    #runScreen {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: white;
+        z-index: 999;
+        flex-direction: column;
+    }
+    
+    #runHeader {
+        background: #1a202c;
+        color: white;
+        padding: 14px 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    #runHeader button {
+        background: #ec4899;
+        color: white;
+        border: none;
+        padding: 8px 18px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 700;
+        transition: background 0.2s;
+    }
+    #runHeader button:hover { background: #db2777; }
+    
+    #runFrame {
+        flex: 1;
+        border: none;
+        width: 100%;
+    }
+    input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 18px;
+    border: 2px dashed #ec4899; /* Viền nét đứt màu hồng nổi bật */
+    border-radius: 14px;
+    background: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+.custom-file-upload:hover {
+    background: #fdf2f8;
+    border-color: #db2777;
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.15);
+}
+
+/* Phần hiển thị tên file khi người dùng đã chọn */
+#fileNameDisplay {
+    font-size: 0.9rem;
+    color: #db2777;
+    font-weight: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 60%;
+}
+</style>
+    </style>
+
+    <!-- Nhúng Firebase SDK bản mới nhất (Modular v10) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        // TODO: Thay thế đoạn cấu hình dưới đây bằng thông tin Firebase của bro
+        const firebaseConfig = {
+            apiKey: "AIzaSyCMMtJNyIfLMbPhfMuCNbNSZbXHFtMM8lw",
+            authDomain: "mygift-da196.firebaseapp.com",
+            projectId: "mygift-da196",
+            storageBucket: "mygift-da196.firebasestorage.app",
+            messagingSenderId: "919219649756",
+            appId: "1:919219649756:web:34a421e06ecd1c69f0c819"
+        };
+
+        // Khởi tạo Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        const giftNameInput = document.getElementById('giftName');
+        const giftFileInput = document.getElementById('giftFile');
+        const btnSaveGift = document.getElementById('btnSaveGift');
+        const giftGrid = document.getElementById('giftGrid');
+        
+        const mainDashboard = document.getElementById('mainDashboard');
+        const runScreen = document.getElementById('runScreen');
+        const runFrame = document.getElementById('runFrame');
+        const runningTitle = document.getElementById('runningTitle');
+
+        let loadedGifts = []; // Mảng chứa danh sách gift tải từ cloud
+
+        // Hàm tải danh sách gift từ Firestore lên web
+        async function fetchGifts() {
+            giftGrid.innerHTML = '<p style="text-align:center; width:100%;">Đang tải dữ liệu từ đám mây...</p>';
+            try {
+                const querySnapshot = await getDocs(collection(db, "gifts"));
+                loadedGifts = [];
+                querySnapshot.forEach((docSnap) => {
+                    loadedGifts.push({ id: docSnap.id, ...docSnap.data() });
+                });
+                renderGifts();
+            } catch (error) {
+                console.error("Lỗi tải dữ liệu: ", error);
+                giftGrid.innerHTML = '<p style="color:red; text-align:center; width:100%;">Lỗi kết nối database!</p>';
+            }
+        }
+
+        // Render danh sách ra giao diện
+        function renderGifts() {
+            giftGrid.innerHTML = '';
+
+            if (loadedGifts.length === 0) {
+                giftGrid.innerHTML = '<p style="color: #777; width: 100%; text-align: center;">Chưa có gift nào trên đám mây.</p>';
+                return;
+            }
+
+            loadedGifts.forEach((gift, index) => {
+                const card = document.createElement('div');
+                card.className = 'gift-card';
+                card.innerHTML = `
+                    <h3>${gift.name}</h3>
+                    <button class="btn-run" onclick="window.runGiftByIndex(${index})">Chạy ngay</button>
+                    <button class="btn-delete" onclick="window.deleteGiftById('${gift.id}')">Xóa</button>
+                `;
+                giftGrid.appendChild(card);
+            });
+        }
+
+        // Sự kiện Upload lên Firebase
+        btnSaveGift.addEventListener('click', () => {
+            const name = giftNameInput.value.trim();
+            const file = giftFileInput.files[0];
+
+            if (!name || !file) {
+        showAlert('Vui lòng nhập tên và chọn file HTML!');
+             return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = async function(e) {
+                const htmlContent = e.target.result;
+
+                try {
+                    btnSaveGift.innerText = "Đang tải lên mây...";
+                    btnSaveGift.disabled = true;
+
+                    // Lưu vào collection "gifts" trên Firestore
+                    await addDoc(collection(db, "gifts"), {
+                        name: name,
+                        content: htmlContent,
+                        createdAt: new Date()
+                    });
+
+                    giftNameInput.value = '';
+                    giftFileInput.value = '';
+                   showAlert('Đã lưu lên Firebase thành công!');
+                    fetchGifts(); // Load lại danh sách mới
+                } catch (error) {
+                    console.error("Lỗi khi upload: ", error);
+                 showAlert('có lỗi xảy ra');
+                } finally {
+                    btnSaveGift.innerText = "Tải Lên & Lưu Trữ Lên Mây";
+                    btnSaveGift.disabled = false;
+                }
+            };
+            reader.readAsText(file);
+        });
+
+        // Gắn các hàm ra window để nút bấm HTML gọi được
+        window.runGiftByIndex = function(index) {
+            const gift = loadedGifts[index];
+            runningTitle.innerText = `Đang chạy: ${gift.name}`;
+            mainDashboard.style.display = 'none';
+            runScreen.style.display = 'flex';
+            runFrame.srcdoc = gift.content;
+        }
+
+        window.deleteGiftById = async function(id) {
+            if (confirm('Bro có chắc muốn xóa gift này trên mây không?')) {
+                try {
+                    await deleteDoc(doc(db, "gifts", id));
+                    fetchGifts();
+                } catch (error) {
+                    console.error("Lỗi xóa: ", error);
+                }
+            }
+        }
+
+        window.closeGift = function() {
+            runFrame.srcdoc = '';
+            runScreen.style.display = 'none';
+            mainDashboard.style.display = 'block';
+        }
+       // Hàm hiển thị Modal thay cho alert()
+    function showAlert(message) {
+        document.getElementById('modalMessage').innerText = message;
+        document.getElementById('customModal').style.display = 'flex';
+    }
+
+    // Hàm đóng Modal khi ấn nút OK
+    function closeModal() {
+        document.getElementById('customModal').style.display = 'none';
+    }
+        // Gắn hẳn ra window để nút bấm HTML gọi được trực tiếp
+    window.showAlert = function(message) {
+        document.getElementById('modalMessage').innerText = message;
+        document.getElementById('customModal').style.display = 'flex';
+    }
+
+    window.closeModal = function() {
+        document.getElementById('customModal').style.display = 'none';
+    }
+    </script>
+</head>
+<body>
+ <div class="container" id="mainDashboard">
+    <h1>
+        ☁️ Kho Gift Cực Khủng
+        <img src="Heart Couple GIF.gif" alt="Gift động" class="animated-gift">
+    </h1>
+    
+    <!-- Khung bọc tổng thể 2 cột -->
+    <div class="dashboard-layout">
+        
+        <!-- CỘT TRÁI: Ô Upload -->
+        <div class="upload-box">
+            <h2>Tải Lên Gift Mới Lên Mây</h2>
+            <div class="form-group">
+                <label>Tên Gift:</label>
+                <input type="text" id="giftName" placeholder="Ví dụ: anh thắng đẹp chai này :)">
+            </div>
+            <div class="form-group">
+                <label>Chọn file HTML của gift:</label>
+                <label for="giftFile" class="custom-file-upload">
+                    <span>📁 Bấm vào đây để chọn file HTML...</span>
+                    <span id="fileNameDisplay">Chưa chọn file</span>
+                </label>
+                <input type="file" id="giftFile" accept=".html">
+            </div>
+            <button class="btn-upload" id="btnSaveGift">Tải Lên & Lưu Trữ Lên Mây</button>
+        </div>
+
+        <!-- CỘT PHẢI: Danh sách Gift -->
+        <div class="list-section">
+            <h2>Danh Sách Gift Trên Đám Mây</h2>
+            <div class="gift-grid" id="giftGrid">
+                <!-- Render bằng JS -->
+            </div>
+        </div>
+
+    </div>
+</div>
+ <div id="customModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 10000; justify-content: center; align-items: center;">
+    <div style="background: white; padding: 25px 30px; border-radius: 12px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2); max-width: 350px; width: 100%;">
+        <p id="modalMessage" style="font-size: 16px; color: #333; margin-bottom: 20px; font-weight: bold;"></p>
+        <button onclick="closeModal()" style="background-color: #00b020; color: white; border: none; padding: 10px 20px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; width: 100%;">OK</button>
+    </div>
+</div>
+    <!-- Màn hình chạy trực tiếp Gift -->
+    <div id="runScreen">
+        <div id="runHeader">
+            <span id="runningTitle" style="font-weight: bold; font-size: 18px;">Đang chạy gift...</span>
+            <button onclick="window.closeGift()">Quay lại kho</button>
+        </div>
+        <iframe id="runFrame"></iframe>
+    </div>
+
+</body>
+</html>
